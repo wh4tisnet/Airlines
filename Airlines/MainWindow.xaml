@@ -1,0 +1,51 @@
+﻿<Window x:Class="Airlines.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Airlines" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Grid>
+        <TextBlock Text="Plane Company:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" FontSize="14" Foreground="Black"/>
+        <ComboBox Name="PlaneCompanyComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0" Width="200" Height="25" />
+
+        <TextBlock Text="State From:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,60,0,0" FontSize="14" Foreground="Black"/>
+        <ComboBox Name="StateFromComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,60,0,0" Width="200" Height="25" SelectionChanged="StateFromComboBox_SelectionChanged"/>
+
+        <TextBlock Text="State To:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,100,0,0" FontSize="14" Foreground="Black"/>
+        <ComboBox Name="StateToComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,100,0,0" Width="200" Height="25" />
+
+        <TextBlock Text="Arrival Date Time:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,140,0,0" FontSize="14" Foreground="Black"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,140,0,0" Orientation="Horizontal">
+            <DatePicker Name="ArrivalDatePicker" Width="150" Height="25" />
+            <TextBox Name="ArrivalTimeTextBox" Width="50" Height="25" Margin="5,0,0,0" MaxLength="5" Text="00:00" />
+        </StackPanel>
+
+        <TextBlock Text="Departure Date Time:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,180,0,0" FontSize="14" Foreground="Black"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,180,0,0" Orientation="Horizontal">
+            <DatePicker Name="DepartureDatePicker" Width="150" Height="25" />
+            <TextBox Name="DepartureTimeTextBox" Width="50" Height="25" Margin="5,0,0,0" MaxLength="5" Text="00:00" />
+        </StackPanel>
+
+        <TextBlock Text="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,220,0,0" FontSize="14" Foreground="Black"/>
+        <TextBox Name="NameTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,220,0,0" Width="200" Height="25"/>
+
+        <TextBlock Text="Contact Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,260,0,0" FontSize="14" Foreground="Black"/>
+        <TextBox Name="ContactEmailTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,260,0,0" Width="200" Height="25"/>
+
+        <TextBlock Text="Contact Telephone:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,300,0,0" FontSize="14" Foreground="Black"/>
+        <TextBox Name="ContactTelephoneTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,300,0,0" Width="200" Height="25"/>
+
+        <TextBlock Text="Business Class:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,340,0,0" FontSize="14" Foreground="Black"/>
+        <CheckBox Name="BusinessClassCheckBox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,340,0,0"/>
+
+        <TextBlock Text="Id:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="698,20,0,0" FontSize="14" Foreground="Black"/>
+        <TextBox x:Name="IdTextBox" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="718,17,0,0" Width="72" Height="25"/>
+
+        <Button Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="30" Margin="668,309,0,0" Click="Saveas_Click"/>
+        <Button Content="Open" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" Click="OpenWindow_Click" Margin="554,119,0,0"  Foreground="Green" Background="NavajoWhite"/>
+    </Grid>
+
+</Window>
+
