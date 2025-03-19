@@ -1,4 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -148,37 +148,24 @@ namespace Airlines
             string selectedStateFrom = cboCountry.SelectedValue?.ToString();
             string selectedStateIs = cboCountryIs.SelectedValue?.ToString();
 
-            string filterExpression = "";
+            string filterExpression = " 1=1 ";
 
             if (int.TryParse(selectedPlaneCompany, out int planeCompany) && planeCompany != -1)
             {
-                filterExpression += $"planeCompany = '{selectedPlaneCompany}'";
+                filterExpression += $" AND planeCompany = '{selectedPlaneCompany}'";
             }
 
             if (int.TryParse(selectedStateFrom, out int stateFrom) && stateFrom != -1)
             {
-                if (!string.IsNullOrEmpty(filterExpression))
-                    filterExpression += " AND ";
-
-                filterExpression += $"stateFrom = '{selectedStateFrom}'";
+                filterExpression += $" AND stateFrom = '{selectedStateFrom}'";
             }
 
             if (int.TryParse(selectedStateIs, out int stateIs) && stateIs != -1)
             {
-                if (!string.IsNullOrEmpty(filterExpression))
-                    filterExpression += " AND ";
-
-                filterExpression += $"stateTo = '{selectedStateIs}'";
+                filterExpression += $" AND stateTo = '{selectedStateIs}'";
             }
 
-            if (!string.IsNullOrEmpty(filterExpression))
-            {
-                ((DataView)dtgPassengers.ItemsSource).RowFilter = filterExpression;
-            }
-            else
-            {
-                ((DataView)dtgPassengers.ItemsSource).RowFilter = string.Empty;
-            }
+            ((DataView)dtgPassengers.ItemsSource).RowFilter = filterExpression;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
