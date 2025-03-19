@@ -1,4 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -193,8 +193,12 @@ namespace Airlines
 
         private bool IsValidEmail(string email)
         {
-            return email.Contains("@") && email.Contains(".");
+            int atIndex = email.IndexOf('@');
+            int dotIndex = email.IndexOf('.', atIndex);
+
+            return atIndex > 0 && dotIndex > atIndex;
         }
+
 
         private bool IsValidPhoneNumber(string phone)
         {
@@ -206,8 +210,20 @@ namespace Airlines
             if (date == null || string.IsNullOrEmpty(timeText)) return false;
 
             DateTime dateTime;
-            return DateTime.TryParseExact(timeText, "HH:mm", null, System.Globalization.DateTimeStyles.None, out dateTime);
+            bool isValidTime = DateTime.TryParseExact(timeText, "HH:mm", null, System.Globalization.DateTimeStyles.None, out dateTime);
+
+            if (!isValidTime) return false;
+
+            DateTime selectedDateTime = new DateTime(date.Value.Year, date.Value.Month, date.Value.Day, dateTime.Hour, dateTime.Minute, 0);
+
+            if (selectedDateTime < DateTime.Now)
+            {
+                MessageBox.Show("The date is in past.", "Error the date", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+                return true;
         }
+
 
         private int FindNextEmptyRow(Worksheet worksheet)
         {
