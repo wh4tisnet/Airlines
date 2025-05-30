@@ -12,7 +12,7 @@ This repository contains a program designed to manage airline companies around t
 ## Technologies Used
 
 - Programming Language: C#
-- Frameworks and Libraries: (Please specify any frameworks or libraries used)
+- Frameworks and Libraries: (Please specify any frameworks or libraries used).
 
 ## Getting Started
 
